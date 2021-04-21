@@ -6,7 +6,7 @@ include_directories(Lib/sqlite)
 
 add_subdirectory(Lib/armadillo-10.4.0)
 
-if(MSVC)
+if(WIN32)
 
 else()
     find_package(Threads)
@@ -17,7 +17,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 
 add_executable(Solution main.cpp ${SQLITE_SOURCES})
-if(MSVC)
+if(WIN32)
     target_link_libraries(Solution armadillo)
 else()
     target_link_libraries(Solution armadillo Threads::Threads dl m)
